@@ -12,7 +12,7 @@ I love data structure. Understanding data structure is always beneficial for sof
 2. Swift is still in its early stages. You might find traditional Objective-c useful (e.g., NSDate).
 <pre> <code>import Foundation
 </code></pre>
-3. Run swift in the terminal
+3. Run swift in the terminal (playground is quite buggy)
 <pre> <code>$ swift &lt;filename.swift&gt;
 </code></pre>
 4. Use swift compiler
