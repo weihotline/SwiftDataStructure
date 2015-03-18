@@ -1,4 +1,6 @@
+// encapsulation
 class MergeSort<T: Comparable> {
+    // class level method
     class func sort(array: Array<T>) -> Array<T> {
 
         let length = array.count
@@ -27,4 +29,23 @@ class MergeSort<T: Comparable> {
 
         return mergedArray + left + right
     }
+}// end MergeSort
+
+// TestDriver main
+func main() {
+    let emptyArray: Array<Int> = []
+    print("it should return an empty array: ")
+    println(MergeSort<Int>.sort(emptyArray) == [])
+
+    let sortedArray: Array<Int> = [ 1, 2, 3 ]
+    let unsortedArray: Array<Int> = [ 12, 34, 2, 32, 123, 4, 5, 1 ]
+    print("it should return a sorted array: ")
+    print(MergeSort<Int>.sort(sortedArray) == [ 1, 2, 3 ])
+    print(" ")
+    println(MergeSort<Int>.sort(unsortedArray) == [ 1, 2, 4, 5, 12, 32, 34, 123 ])
+
+    print("since this is not an in-place sort, the original array should not be modified: ")
+    println(unsortedArray == [ 12, 34, 2, 32, 123, 4, 5, 1 ])
 }
+
+main()
