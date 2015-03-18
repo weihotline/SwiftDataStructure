@@ -212,24 +212,31 @@ public class LinkedList<T: Comparable> {
 // TestDriver main
 func main() {
     var linkedlist = LinkedList<Int>()
-    println("The size should start with 0: " + String(linkedlist.size))
+    print("The size should start with 0: ")
+    println(linkedlist.size == 0)
     linkedlist.push(1)
     linkedlist.push(2)
     linkedlist.pushLink(Link<Int>(value: 3))
 
+    println("pushing 1, 2, 3 to the linkedlist")
     var lastElement = linkedlist.peekLast()!.value!
-    println("Last Element is 3: " + String(lastElement))
+    print("last element is 3: ")
+    println(lastElement == 3)
     var firstElement = linkedlist.peekFirst()!.value!
-    println("First Element is 1: " + String(firstElement))
+    print("first element is 1: ")
+    println(firstElement == 1)
 
     linkedlist.pop()
     lastElement = linkedlist.peekLast()!.value!
-    println("Now Last Element is 2: " + String(lastElement))
+    print("Pop the last element, now last element is 2: ")
+    println(lastElement == 2)
     linkedlist.shift()
     firstElement = linkedlist.peekFirst()!.value!
-    println("First Element is 2: " + String(firstElement))
+    print("Shift the first element, now first element is 2: ")
+    println(firstElement == 2)
 
-    println("The size is 1: " + String(linkedlist.size))
+    print("The size is 1: ")
+    println(linkedlist.size == 1)
 
     linkedlist.pop()
     print("Remove the last Link. isEmpty should be true: ")

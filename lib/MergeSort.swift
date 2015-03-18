@@ -41,8 +41,14 @@ func main() {
     let unsortedArray: Array<Int> = [ 12, 34, 2, 32, 123, 4, 5, 1 ]
     print("it should return a sorted array: ")
     print(MergeSort<Int>.sort(sortedArray) == [ 1, 2, 3 ])
-    print(" ")
+
+    println("")
+    print("it should sort a string array: ")
     println(MergeSort<Int>.sort(unsortedArray) == [ 1, 2, 4, 5, 12, 32, 34, 123 ])
+
+    let unsortedStringArray = [ "hey", "find",  "sort",  "me", "please" ]
+    print("it should sort a string array: ")
+    println(MergeSort<String>.sort(unsortedStringArray) == [ "find", "hey", "me", "please", "sort" ])
 
     print("since this is not an in-place sort, the original array should not be modified: ")
     println(unsortedArray == [ 12, 34, 2, 32, 123, 4, 5, 1 ])
