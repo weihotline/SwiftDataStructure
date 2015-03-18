@@ -13,11 +13,11 @@ I love data structure. Understanding data structure is always beneficial for sof
 <pre> <code>import Foundation
 </code></pre>
 3. Run swift in the terminal
-<pre> <code>$ swift &ltfilename.swift&gt
+<pre> <code>$ swift &lt;filename.swift&gt;
 </code></pre>
 4. Use swift compiler
-<pre> <code>$ swiftc &ltfilename.swift&gt
- $ ./&ltfilename&gt
+<pre> <code>$ swiftc &lt;filename.swift&gt;
+ $ ./&lt;filename&gt;
 </code></pre>
 5. Compilation error: cannot load underlying module for 'CoreGraphics'
 <pre> <code>// add SDKROOT env varible to the .bash_profile
