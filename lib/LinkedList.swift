@@ -2,7 +2,6 @@ import Foundation
 
 // Link class
 public class Link<T: Comparable> {
-    // ! means once Link is intantiated, it must have a value
     // value, next, and prev can be nil, so use ?
     var value: T?
     var next: Link<T>?
