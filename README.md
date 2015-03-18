@@ -3,6 +3,7 @@ I love data structure. Understanding data structure is always beneficial for sof
 
 ## List of Common Data Structures
 * [LinkedList](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/LinkedList.swift)
+* [MergeSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/MergeSort.swift)
 
 ## Tips for writing simple swift script
 <p>
