@@ -51,8 +51,11 @@ public class Link<T: Comparable> {
         self.next = nil
         self.prev = nil
     }
-}
+}// end Link class
 
+
+
+// SentinelLink: head and tail links
 internal class SentinelLink<T: Comparable>: Link<T> {
     var side: String!
     /* SentinelLink should not have values */
@@ -129,9 +132,10 @@ internal class SentinelLink<T: Comparable>: Link<T> {
             reason: "Can't remove a sentinel!",
             userInfo: nil).raise()
     }
-}
+} // end SentinelLink class
 
 
+// LinkedList (Doubly)
 public class LinkedList<T: Comparable> {
     private var head: SentinelLink<T>!
     private var tail: SentinelLink<T>!
@@ -203,8 +207,10 @@ public class LinkedList<T: Comparable> {
     func peekLast() -> Link<T>? {
         return isEmpty ? nil : tail.prev!
     }
-}
+}// end LinkedList class
 
+
+// TestDriver main
 func main() {
     var linkedlist = LinkedList<Int>()
     println("The size should start with 0: " + String(linkedlist.size))
