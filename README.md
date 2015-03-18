@@ -10,6 +10,5 @@ I love data structure. Understanding data structure is always beneficial for sof
 <pre> <code>xcodebuild -version
 </code></pre>
 2. Swift is still in its early stages. You might find traditional Objective-c useful (e.g., NSDate).
-<pre> <code> // in swift file
-import Foundation
-</code> </pre>
+<pre> <code> import Foundation
+</code></pre>
