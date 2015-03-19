@@ -5,6 +5,7 @@ I love data structure. Understanding data structure is always beneficial for sof
 * [LinkedList](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/LinkedList.swift)
 * [HashTable](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/HashTable.swift)
 * [BinaryMinHeap](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/BinaryMinHeap.swift)
+* [Graph](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/Graph.swift)
 * [LRUCache](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/LRUCache.swift)
 * [MergeSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/MergeSort.swift)
 * [QuickSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/QuickSort.swift)
