@@ -1,6 +1,8 @@
 // encapsulation
 class MergeSort<T: Comparable> {
     // class level method
+    // time complexity: O(nlogn)
+    // space complexity: O(n)
     class func sort(array: Array<T>) -> Array<T> {
 
         let length = array.count
@@ -30,6 +32,7 @@ class MergeSort<T: Comparable> {
         return mergedArray + left + right
     }
 }// end MergeSort
+
 
 // TestDriver main
 func main() {
