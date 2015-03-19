@@ -119,8 +119,44 @@ public class HashTable<K: Hashable, V: Comparable> {
 // TestDriver main
 func main() {
     var hash = HashTable<String, Int>()
-    hash.put(key: "a", value:1)
+    print("hash starts with empty size: ")
+    println(hash.isEmpty)
+
+    print("it should return true if key-value pair successfully added: ")
+    println(hash.put(key: "a", value: 1))
+    hash.put(key: "b", value: 2)
+    hash.put(key: "c", value: 3)
+    hash.put(key: "d", value: 4)
+    hash.put(key: "e", value: 5)
+
+    print("it should return false if key does already exist: ")
+    println(!hash.put(key: "a", value: 2))
+
+    print("the number of entries is 5: ")
+    println(hash.count == 5)
+
+    print("#get: it should return nil if the key does not exist: ")
+    println(hash.get("f") == nil)
+
+    print("it should return the correct value: ")
+    println(hash.get("d") == 4)
+
+    print("it should return true if the key exists in the hashtable: ")
+    println(hash.containsKey("a"))
+
+    print("it should return true if the key exists in the hashtable: ")
+    println(hash.containsValue(2))
+
+    print("it should return false if the key exists in the hashtable: ")
+    println(!hash.containsKey("q"))
+
+    print("it should return false if the key exists in the hashtable: ")
+    println(!hash.containsValue(10))
+
+    print("the number of entries is reduced to 3 after 2 removals: ")
     hash.remove("a")
+    hash.remove("b")
+    println(hash.count == 3)
 }
 
 main()
