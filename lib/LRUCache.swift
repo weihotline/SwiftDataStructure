@@ -92,7 +92,7 @@ public class LinkedList<T: Comparable> {
     }
 
     func popLink() -> Link<T> {
-        assert(isEmpty, "can't pop from empty list!")
+        assert(!isEmpty, "can't pop from empty list!")
 
         let link = tail.prev
         link!.remove()
@@ -113,7 +113,7 @@ public class LinkedList<T: Comparable> {
     }
 
     func shiftLink() -> Link<T> {
-        assert(isEmpty, "can't shift from empty list!")
+        assert(!isEmpty, "can't shift from empty list!")
 
         let link = head.next
         link!.remove()

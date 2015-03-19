@@ -1,4 +1,5 @@
-class HashTable<K: Hashable, V: Comparable> {
+// HashTable class
+public class HashTable<K: Hashable, V: Comparable> {
     private let defaultSize = 101
     private let maxLoad = 0.50
     internal var buckets: Array<Array<(K, V)>> = []
@@ -21,7 +22,7 @@ class HashTable<K: Hashable, V: Comparable> {
             return false
         }
 
-        // O(n), happen infrequently, amortized O(1)
+        // resize: O(n), happen infrequently, amortized O(1)
         if (Double(count + 1) / Double(buckets.count)) > maxLoad {
             resize()
         }
@@ -62,7 +63,8 @@ class HashTable<K: Hashable, V: Comparable> {
 
     func remove(key: K) -> Void {
         // overhead O(1) randomized
-        assert(containsKey(key), "key doesn't exist in the Hashtable")
+        assert(containsKey(key),
+               "key doesn't exist in the Hashtable")
         // O(1) randomized/evenly distributed data
         removeFromBucket(key, buckets: &buckets)
         count--
@@ -84,6 +86,7 @@ class HashTable<K: Hashable, V: Comparable> {
             let bucketPos = key.hashValue % buckets.count
             var foundIdx: Int!
 
+            // O(1) for evenly distributed data
             for (index, (itemKey, _)) in enumerate(buckets[bucketPos]) {
                 if key == itemKey {
                     foundIdx = index
@@ -109,7 +112,15 @@ class HashTable<K: Hashable, V: Comparable> {
 
         self.buckets = newBuckets
     }
+}// end HashTable class
+
+
+
+// TestDriver main
+func main() {
+    var hash = HashTable<String, Int>()
+    hash.put(key: "a", value:1)
+    hash.remove("a")
 }
 
-var hash = HashTable<String, Int>()
-println(hash.isEmpty)
+main()
