@@ -1,3 +1,5 @@
+import Foundation
+
 // AVLTree class
 class AVLTree<T: Comparable> {
     var root: AVLTreeNode<T>?
@@ -92,6 +94,9 @@ class AVLTree<T: Comparable> {
             // already balanced
         } else {
             // This should never happen
+            NSException(name: "Exception",
+                reason: "something went wrong!",
+                userInfo: nil).raise()
         }
 
         vertex!.recalculateDepth()
