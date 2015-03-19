@@ -227,6 +227,9 @@ func main() {
     println("it should autobalance: (inorder display) ")
     println("inorder: 0 1 2 3 4 5 6 7 8")
     avltree.traverse()
+
+    print("it should rotate and now the root value is 4: ")
+    println(avltree.root!.value == 4)
 }
 
 main()
