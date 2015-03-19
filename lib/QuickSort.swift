@@ -10,9 +10,19 @@ class QuickSort<T: Comparable> {
 
         let pivot = array[0]
 
-        let left = array.filter() { $0 < pivot },
-        middle = array.filter() { $0 == pivot },
-        right = array.filter() { $0 > pivot }
+        var left: Array<T> = [],
+        middle: Array<T> = [],
+        right: Array<T> = []
+
+        for el in array {
+            if el < pivot {
+                left.append(el)
+            } else if el > pivot {
+                right.append(el)
+            } else {
+                middle.append(el)
+            }
+        }
 
         return notInPlaceSort(left) + middle + notInPlaceSort(right)
     }
