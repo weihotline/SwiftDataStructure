@@ -84,7 +84,11 @@ public class BinaryMinHeap<T: Comparable> {
     }
 
     class func getParentIndex(childIdx: Int) -> Int{
-        assert(childIdx != 0, "root has not parent")
+        if childIdx == 0 {
+            NSException(name: "Exception",
+                        reason: "root has not parent",
+                        userInfo: nil).raise()
+        }
         return (childIdx - 1) / 2
     }
 

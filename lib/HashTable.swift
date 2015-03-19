@@ -63,8 +63,10 @@ public class HashTable<K: Hashable, V: Comparable> {
 
     func remove(key: K) -> Void {
         // overhead O(1) randomized
-        assert(containsKey(key),
-               "key doesn't exist in the Hashtable")
+        if !containsKey(key) {
+            println("key doesn't exist in the Hashtable")
+            return
+        }
         // O(1) randomized/evenly distributed data
         removeFromBucket(key, buckets: &buckets)
         count--

@@ -24,7 +24,11 @@ public class LinkedList<T: Comparable> {
     }
 
     func popLink() -> Link<T> {
-        assert(!isEmpty, "can't pop from empty list!")
+        if isEmpty {
+            NSException(name: "Exception",
+                reason: "can't shift from empty list!",
+                userInfo: nil).raise()
+        }
 
         let link = tail.prev!
         link.remove()
@@ -47,7 +51,11 @@ public class LinkedList<T: Comparable> {
     }
 
     func shiftLink() -> Link<T> {
-        assert(!isEmpty, "can't shift from empty list!")
+        if isEmpty {
+            NSException(name: "Exception",
+                reason: "can't shift from empty list!",
+                userInfo: nil).raise()
+        }
 
         let link = head.next!
         link.remove()
@@ -91,8 +99,10 @@ public class Link<T: Comparable> {
     }
 
     func insertLeft(link: Link<T>) {
-        assert(link.isDetached,
-            "trying to insert a link that is not detached!")
+        if !link.isDetached {
+            println("trying to insert a link that is not detached!")
+            return
+        }
 
         link.next = self
         link.prev = self.prev
@@ -103,8 +113,10 @@ public class Link<T: Comparable> {
     }
 
     func insertRight(link: Link<T>) {
-        assert(link.isDetached,
-            "trying to insert a link that is not detached!")
+        if !link.isDetached {
+            println("trying to insert a link that is not detached!")
+            return
+        }
 
         link.prev = self
         link.next = self.next
