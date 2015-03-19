@@ -49,10 +49,9 @@ public class LRUCache<K: Hashable, V: Comparable> {
             if linksDict.count == maxSize {
                 let link = linkedList.shiftLink()
                 link.remove()
-                // O(n)
                 for (key, value) in linksDict {
                     if value === link {
-                        linksDict.removeValueForKey(key)!
+                        linksDict.removeValueForKey(key)
                         break
                     }
                 }
