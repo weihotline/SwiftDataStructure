@@ -2,22 +2,19 @@ import Foundation
 
 // Link class
 public class Link<T: Comparable> {
-    // ! means once Link is intantiated, it must have a value
-    // next and prev can be nil, so use ?
-    var value: T?,
-    next: Link<T>?,
-    prev: Link<T>?
+    // value, next and prev can be nil, so use ?
+    var value: T?
+    var next: Link<T>?
+    var prev: Link<T>?
     var isDetached: Bool {
-        get {
-            return next == nil && prev == nil
-        }
+        get { return next == nil && prev == nil }
     }
 
-    public init(value: T?) {
+    init(value: T?) {
         self.value = value
     }
 
-    public func insertLeft(link: Link<T>) {
+    func insertLeft(link: Link<T>) {
         assert(link.isDetached,
             "trying to insert a link that is not detached!")
 
@@ -29,7 +26,7 @@ public class Link<T: Comparable> {
         self.prev = link
     }
 
-    public func insertRight(link: Link<T>) {
+    func insertRight(link: Link<T>) {
         assert(link.isDetached,
             "trying to insert a link that is not detached!")
 
@@ -41,7 +38,7 @@ public class Link<T: Comparable> {
         self.next = link
     }
 
-    public func remove() {
+    func remove() {
         if self.prev != nil {
             self.prev!.next = self.next
         }
@@ -53,9 +50,12 @@ public class Link<T: Comparable> {
         self.next = nil
         self.prev = nil
     }
-}
+}// end Link class
 
-class SentinelLink<T: Comparable>: Link<T> {
+
+
+// SentinelLink: head and tail links
+internal class SentinelLink<T: Comparable>: Link<T> {
     var side: String!
     override var value: T? {
         get {
@@ -79,6 +79,7 @@ class SentinelLink<T: Comparable>: Link<T> {
         }
 
         set(newLink) {
+            /* only tail link can set prev */
             if side == "tail" {
                 super.prev = newLink
             } else if newLink == nil {
@@ -98,6 +99,7 @@ class SentinelLink<T: Comparable>: Link<T> {
         }
 
         set(newLink) {
+            /* only head link can set prev */
             if side == "head" {
                 super.next = newLink
             } else if newLink == nil {
@@ -128,16 +130,18 @@ class SentinelLink<T: Comparable>: Link<T> {
             reason: "Can't remove a sentinel!",
             userInfo: nil).raise()
     }
-}
+}// end SentinelLink class
 
 
-class LinkedList<T: Comparable> {
-    internal var head: SentinelLink<T>!
-    internal var tail: SentinelLink<T>!
+
+// LinkedList (Doubly)
+public class LinkedList<T: Comparable> {
+    private var head: SentinelLink<T>!
+    private var tail: SentinelLink<T>!
     var isEmpty: Bool {
-        get {
-            return head.next === tail
-        }
+        /* when head link's next points to tail link,
+           it is empty */
+        get { return head.next === tail }
     }
 
     init() {
@@ -188,7 +192,7 @@ class LinkedList<T: Comparable> {
         head.insertRight(link)
         return link
     }
-}
+}// end LinkedList class
 
 class LRUCache<K: Hashable, V: Comparable> {
     private var _hits: Int

@@ -1,5 +1,81 @@
 import Foundation
 
+// LinkedList (Doubly)
+public class LinkedList<T: Comparable> {
+    private var head: SentinelLink<T>!
+    private var tail: SentinelLink<T>!
+    var isEmpty: Bool {
+        /* when head link's next points to tail link,
+           it is empty */
+        get { return head.next === tail }
+    }
+    var size: Int
+
+    init() {
+        self.head = SentinelLink(side: "head")
+        self.tail = SentinelLink(side: "tail")
+        self.size = 0
+
+        self.head.insertRight(self.tail)
+    }
+
+    func pop() -> T? {
+        return popLink().value
+    }
+
+    func popLink() -> Link<T> {
+        assert(!isEmpty, "can't pop from empty list!")
+
+        let link = tail.prev!
+        link.remove()
+        size--
+        return link
+    }
+
+    func push(value: T) -> Link<T> {
+        return pushLink(Link(value: value))
+    }
+
+    func pushLink(link: Link<T>) -> Link<T> {
+        tail.insertLeft(link)
+        size++
+        return link
+    }
+
+    func shift() -> T? {
+        return shiftLink().value
+    }
+
+    func shiftLink() -> Link<T> {
+        assert(!isEmpty, "can't shift from empty list!")
+
+        let link = head.next!
+        link.remove()
+        size--
+        return link
+    }
+
+    func unshift(value: T) -> Link<T> {
+        return unshiftLink(Link(value: value))
+    }
+
+    func unshiftLink(link: Link<T>) -> Link<T> {
+        head.insertRight(link)
+        size++
+        return link
+    }
+
+    func peekFirst() -> Link<T>? {
+        return isEmpty ? nil : head.next!
+    }
+
+    func peekLast() -> Link<T>? {
+        return isEmpty ? nil : tail.prev!
+    }
+}// end LinkedList class
+
+
+
 // Link class
 public class Link<T: Comparable> {
     // value, next, and prev can be nil, so use ?
@@ -51,7 +127,6 @@ public class Link<T: Comparable> {
         self.prev = nil
     }
 }// end Link class
-
 
 
 // SentinelLink: head and tail links
@@ -133,80 +208,6 @@ internal class SentinelLink<T: Comparable>: Link<T> {
     }
 } // end SentinelLink class
 
-
-// LinkedList (Doubly)
-public class LinkedList<T: Comparable> {
-    private var head: SentinelLink<T>!
-    private var tail: SentinelLink<T>!
-    var isEmpty: Bool {
-        /* when head link's next points to tail link,
-           it is empty */
-        get { return head.next === tail }
-    }
-    var size: Int
-
-    init() {
-        self.head = SentinelLink(side: "head")
-        self.tail = SentinelLink(side: "tail")
-        self.size = 0
-
-        self.head.insertRight(self.tail)
-    }
-
-    func pop() -> T? {
-        return popLink().value
-    }
-
-    func popLink() -> Link<T> {
-        assert(!isEmpty, "can't pop from empty list!")
-
-        let link = tail.prev!
-        link.remove()
-        size--
-        return link
-    }
-
-    func push(value: T) -> Link<T> {
-        return pushLink(Link(value: value))
-    }
-
-    func pushLink(link: Link<T>) -> Link<T> {
-        tail.insertLeft(link)
-        size++
-        return link
-    }
-
-    func shift() -> T? {
-        return shiftLink().value
-    }
-
-    func shiftLink() -> Link<T> {
-        assert(!isEmpty, "can't shift from empty list!")
-
-        let link = head.next!
-        link.remove()
-        size--
-        return link
-    }
-
-    func unshift(value: T) -> Link<T> {
-        return unshiftLink(Link(value: value))
-    }
-
-    func unshiftLink(link: Link<T>) -> Link<T> {
-        head.insertRight(link)
-        size++
-        return link
-    }
-
-    func peekFirst() -> Link<T>? {
-        return isEmpty ? nil : head.next!
-    }
-
-    func peekLast() -> Link<T>? {
-        return isEmpty ? nil : tail.prev!
-    }
-}// end LinkedList class
 
 
 // TestDriver main
