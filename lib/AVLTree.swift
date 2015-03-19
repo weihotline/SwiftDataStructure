@@ -220,6 +220,7 @@ func main() {
     avltree.insert(8)
     avltree.insert(3)
     println("it should autobalance: (inorder display) ")
+    println("inorder: 0 1 2 3 4 5 6 7 8")
     avltree.traverse()
 }
 
