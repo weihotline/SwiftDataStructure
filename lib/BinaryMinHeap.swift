@@ -109,7 +109,7 @@ public class BinaryMinHeap<T: Comparable> {
             return heapifyUp(&array, childIdx: parentIdx, len: len)
         }
     }
-}
+}// end BinaryMinHeap class
 
 
 

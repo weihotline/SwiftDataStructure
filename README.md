@@ -8,6 +8,7 @@ I love data structure. Understanding data structure is always beneficial for sof
 * [LRUCache](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/LRUCache.swift)
 * [MergeSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/MergeSort.swift)
 * [QuickSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/QuickSort.swift)
+* [HeapSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/HeapSort.swift)
 
 ## Tips for writing simple swift script
 <p>

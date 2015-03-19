@@ -263,6 +263,7 @@ internal class SentinelLink<T: Comparable>: Link<T> {
             userInfo: nil).raise()
     }
 }// end SentinelLink class
+/******************************************************/
 
 
 
@@ -302,6 +303,7 @@ class CachedFibo {
     }
 }// end CachedFibo
 
+// TestDriver main
 func main() {
     let uncachedFibo = UncachedFibo()
     println("Uncached Fibonacci calculation: ")
