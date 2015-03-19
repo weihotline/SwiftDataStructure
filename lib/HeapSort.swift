@@ -2,6 +2,8 @@ import Foundation
 
 // HeapSort
 class HeapSort<T: Comparable> {
+    // time complexity: O(nlogn)
+    // space complexity: O(1) in-place, not extract stackframe
     class func sort(var array: Array<T>) -> Array<T> {
         let count = array.count
         if count < 2 { return array }
