@@ -1,52 +1,8 @@
-import Foundation
-
-class AVLTreeNode<T: Comparable> {
-    var value: T!,
-    depth: Int!,
-    parent: AVLTreeNode<T>?,
-    left: AVLTreeNode<T>?,
-    right: AVLTreeNode<T>?
-    var balance: Int {
-        get {
-            let cDepth = childrenDepth()
-            return cDepth.right - cDepth.left
-        }
-    }
-    var isBalanced: Bool {
-        get {
-            return abs(balance) < 2
-        }
-    }
-    var parentSide: String? {
-        get {
-            return parent?.left === self ? "left" : "right"
-        }
-    }
-
-    init(value: T) {
-        self.value = value
-        self.depth = 1
-    }
-
-    func recalculateDepth() {
-        let cDepth = childrenDepth()
-        depth = maxElement([cDepth.right, cDepth.left]) + 1
-    }
-
-    private func childrenDepth() -> (left: Int, right: Int) {
-        let rDepth = (right != nil ? right!.depth : 0),
-        lDepth = (left != nil ? left!.depth : 0)
-
-        return (lDepth, rDepth)
-    }
-}
-
+// AVLTree class
 class AVLTree<T: Comparable> {
-    private var root: AVLTreeNode<T>?
-    internal var isEmpty: Bool {
-        get {
-            return root == nil
-        }
+    var root: AVLTreeNode<T>?
+    var isEmpty: Bool {
+        get { return root == nil }
     }
 
     init() {
@@ -96,7 +52,7 @@ class AVLTree<T: Comparable> {
             traverse(vertex!.right, closure: closure)
     }
 
-    internal func findNode(value: T) ->
+    private func findNode(value: T) ->
         (vertex: AVLTreeNode<T>?, parent: AVLTreeNode<T>?) {
             var vertex = root,
             parent: AVLTreeNode<T>!
@@ -117,7 +73,7 @@ class AVLTree<T: Comparable> {
             return (vertex, parent)
     }
 
-    internal func update(vertex: AVLTreeNode<T>?) {
+    private func update(vertex: AVLTreeNode<T>?) {
         if vertex == nil { return }
 
         if vertex!.balance == -2 {
@@ -142,7 +98,7 @@ class AVLTree<T: Comparable> {
         update(vertex!.parent)
     }
 
-    internal func leftRotate(parent: AVLTreeNode<T>) {
+    private func leftRotate(parent: AVLTreeNode<T>) {
         var parentParent = parent.parent,
         parentSide = parent.parentSide,
         rChild = parent.right,
@@ -170,7 +126,7 @@ class AVLTree<T: Comparable> {
         parent.recalculateDepth()
     }
 
-    internal func rightRotate(parent: AVLTreeNode<T>) {
+    private func rightRotate(parent: AVLTreeNode<T>) {
         var parentParent = parent.parent,
         parentSide = parent.parentSide,
         lChild = parent.left,
@@ -197,4 +153,74 @@ class AVLTree<T: Comparable> {
 
         parent.recalculateDepth()
     }
+}// end AVLTree class
+
+
+// AVLTreeNode class
+class AVLTreeNode<T: Comparable> {
+    var value: T!
+    var depth: Int!
+    var parent: AVLTreeNode<T>?
+    var left: AVLTreeNode<T>?
+    var right: AVLTreeNode<T>?
+    var balance: Int {
+        get {
+            let cDepth = childrenDepth()
+            return cDepth.right - cDepth.left
+        }
+    }
+    var isBalanced: Bool {
+        get { return abs(balance) < 2 }
+    }
+    var parentSide: String? {
+        get { return parent?.left === self ? "left" : "right" }
+    }
+
+    init(value: T) {
+        self.value = value
+        self.depth = 1
+    }
+
+    func recalculateDepth() {
+        let cDepth = childrenDepth()
+        depth = maxElement([cDepth.right, cDepth.left]) + 1
+    }
+
+    private func childrenDepth() -> (left: Int, right: Int) {
+        let rDepth = (right != nil ? right!.depth : 0),
+        lDepth = (left != nil ? left!.depth : 0)
+
+        return (lDepth, rDepth)
+    }
+}// end AVLTreeNode
+
+
+
+// TestDriver main
+func main() {
+    var avltree = AVLTree<Int>()
+    print("it should start with empty tree: ")
+    println(avltree.isEmpty == true)
+
+    avltree.insert(2)
+    avltree.insert(4)
+    avltree.insert(5)
+    print("it should rotate and now the root value is 4: ")
+    println(avltree.root!.value == 4)
+
+    print("it should return false for non-existed value: ")
+    println(!avltree.isInclude(0))
+    print("it should return true for existed value: ")
+    println(avltree.isInclude(5))
+
+    avltree.insert(6)
+    avltree.insert(7)
+    avltree.insert(1)
+    avltree.insert(0)
+    avltree.insert(8)
+    avltree.insert(3)
+    println("it should autobalance: (inorder display) ")
+    avltree.traverse()
 }
+
+main()
