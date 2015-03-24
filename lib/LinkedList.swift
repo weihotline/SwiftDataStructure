@@ -187,12 +187,12 @@ internal class SentinelLink<T: Comparable>: Link<T> {
         }
 
         set(newLink) {
-            /* only head link can set prev */
+            /* only head link can set next */
             if side == "head" {
                 super.next = newLink
             } else if newLink == nil {
                 /* the first sentinel may allow superfluous
-                set of prev to `nil`. */
+                set of next to `nil`. */
             } else {
                 NSException(name: "Exception",
                     reason: "can't set prev of first sentinel",
