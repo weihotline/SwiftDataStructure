@@ -8,6 +8,8 @@ I love data structure. Understanding data structure is always beneficial for sof
 * [AVLTree](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/AVLTree.swift)
 * [Graph](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/Graph.swift)
 * [LRUCache](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/LRUCache.swift)
+
+## Some Sorting Algorithms
 * [MergeSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/MergeSort.swift)
 * [QuickSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/QuickSort.swift)
 * [HeapSort](https://github.com/weihotline/SwiftDataStructure/blob/master/lib/HeapSort.swift)
